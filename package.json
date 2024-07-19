@@ -1,0 +1,20 @@
+{
+    "name": "social-network-api",
+    "version": "1.0.0",
+    "description": "A social network API built with Express and MongoDB that uses CRUD operations.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node index",
+        "dev": "nodemon index",
+        "seed": "node utils/seed"
+    },
+    "author": "Timothy Watson",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^8.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.9"
+    }
+}
