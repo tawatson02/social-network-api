@@ -33,7 +33,7 @@ module.exports = {
                 { runValidators: true, new: true }
             );
 
-            res.status(thought);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -49,7 +49,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: `That thought wasn't found.` });
             }
-            res.json(user);
+            res.json(thought);
         } catch (err) {
             console.log(err)
             res.status(500).json(err);
