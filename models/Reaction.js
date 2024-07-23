@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
 const timeStamp = (date) => {
     return new Date(date).toLocaleString();

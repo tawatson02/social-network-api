@@ -18,7 +18,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: 'No thought with that ID.' });
             }
-            res.status(thought);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -80,6 +80,7 @@ module.exports = {
 
     async addReaction(req, res) {
         try {
+            console
             const reaction = {
                 reationId: new Types.ObjectId(),
                 reactionBody: req.body.reactionBody,
@@ -87,7 +88,7 @@ module.exports = {
                 createdAt: new Date(),
             };
             const updatedThought = await Thought.findOneAndUpdate(
-                { thoughts: req.params.thoughtId },
+                { _id: req.params.thoughtId },
                 { $addToSet: { reactions: reaction } },
                 { runValidators: true, new: true }
             );
@@ -105,8 +106,8 @@ module.exports = {
     async removeReaction(req, res) {
         try {
             const updatedThought = await Thought.findOneAndUpdate(
-                { thoughts: req.params.thoughtId },
-                { $pull: { reactioins: req.params.reactionId } },
+                { _id: req.params.thoughtId },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true }
             );
 
